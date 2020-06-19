@@ -16,7 +16,7 @@ namespace GestaoEstacionamento
 
             int opcao = 0;
             // Arquivo dados = new Arquivo();
-
+            //teste
 
             using (var reader = new StreamReader(@"C:\Users\DANI\source\repos\AppGestaoEstacionamento\AppGestaoEstacionamento\Carros.txt"))
             using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
