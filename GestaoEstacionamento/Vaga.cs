@@ -1,7 +1,5 @@
 ﻿using CsvHelper.Configuration.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GestaoEstacionamento
 {
@@ -11,9 +9,6 @@ namespace GestaoEstacionamento
         public string IdEstacionamento { get; set; }
         [Index(1)]
         public string IdVaga { get; set; }
-
-
+      
     }
-
 }
-

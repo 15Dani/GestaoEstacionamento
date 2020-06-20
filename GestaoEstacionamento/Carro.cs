@@ -1,8 +1,5 @@
 ﻿using CsvHelper.Configuration.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 
 namespace GestaoEstacionamento
 {
@@ -13,6 +10,3 @@ namespace GestaoEstacionamento
 
     }
 }
-
-   
-    
