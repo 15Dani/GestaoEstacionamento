@@ -21,21 +21,21 @@ namespace GestaoEstacionamento
             vagas = new List<Vaga>();
             usoDeVagas = new List<UsoDeVaga>();
 
-            using (var reader = new StreamReader(@"C:\Users\DANI\source\repos\AppGestaoEstacionamento\AppGestaoEstacionamento\Carros.txt"))
+            using (var reader = new StreamReader(@".\Carros.txt"))
             using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
             {
                 csv.Configuration.HasHeaderRecord = false;
                 carros.AddRange(csv.GetRecords<Carro>());
             }
 
-            using (var reader = new StreamReader(@"C:\Users\DANI\source\repos\AppGestaoEstacionamento\AppGestaoEstacionamento\Vagas.txt"))
+            using (var reader = new StreamReader(@".\Vagas.txt"))
             using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
             {
                 csv.Configuration.HasHeaderRecord = false;
                 vagas.AddRange(csv.GetRecords<Vaga>());
             }
 
-            using (var reader = new StreamReader(@"C:\Users\DANI\source\repos\AppGestaoEstacionamento\AppGestaoEstacionamento\Uso.txt"))
+            using (var reader = new StreamReader(@".\Uso.txt"))
             using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
             {
                 csv.Configuration.HasHeaderRecord = false;
@@ -72,7 +72,7 @@ namespace GestaoEstacionamento
 
             // Filtra as vagas de dentro do intervalo.
             var vagasResult = usoDeVagas
-                .Where(p => p.Entrada.Date >= dataIni && p.Saida <= dataFin)
+                .Where(p => p.Entrada.Date >= dataIni && p.Entrada.Date <= dataFin)
                 .Select(p => p)
                 .ToList();
 
@@ -134,7 +134,7 @@ namespace GestaoEstacionamento
                 var valor = diferenca.TotalHours * valorHora;
                 valorTotal += valor;
 
-                Console.WriteLine($"{vaga.Placa} estacionado em {vaga.Entrada:dd/MM/yyyy} por {diferenca.TotalHours} horas no valor de {valor}");
+                Console.WriteLine($"{vaga.Placa} estacionado em {vaga.Entrada:dd/MM/yyyy} por {diferenca.Hours}:{diferenca.Minutes} no valor de {valor:C}");
             }
 
             Console.WriteLine($"Valor total de {valorTotal}");
